@@ -1,2 +1,2 @@
 # RoboticArm
-Roboti käsi, piirilevt on tehty valmiiks
+Roboti käsi, piirilevy on tehty valmiiks
