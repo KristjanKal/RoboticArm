@@ -8,35 +8,35 @@ Servo servo1; //Servos
 Servo servo2;
 Servo servo3;
 
-const int LED1 = 2; //LEDs
+const int LED1 = 2; //LEDit
 const int LED2 = 3;
 const int LED3 = 4;
 const int LED4 = 7;
 const int LED5 = 8;
 
-const int button1 = 12; //Buttons
+const int button1 = 12; //nappit 
 const int button2 = 13;
 
-int button1Presses = 0; //Button values1
+int button1Presses = 0; //nappien arvot 
 boolean button2Pressed = false;
 
-const int pot1 = A0; //Potentimeters
+const int pot1 = A0; // pinnit mihin potentiometeri on yhdistetty
 const int pot2 = A1; 
 const int pot3 = A2;
 
-int pot1Val; //Potentimeter values
+int pot1Val; //Potentiometerin arvot 
 int pot2Val;
 int pot3Val;
 int pot1Angle;
 int pot2Angle;
 int pot3Angle;
 
-int servo1PosSaves[] = {1,1,1,1,1}; //position saves
+int servo1PosSaves[] = {1,1,1,1,1}; //asento arvot 
 int servo2PosSaves[] = {1,1,1,1,1};
 int servo3PosSaves[] = {1,1,1,1,1};
 
 void setup() {
-  servo1.attach(5); // Set up everything and will run once; attach servos and define the pin modes
+  servo1.attach(5); // pinnit mihin servot ja nappit on kytketty
   servo2.attach(6);
   servo3.attach(9);
   
@@ -52,8 +52,8 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly: 
-  pot1Val = analogRead(pot1); // This will read the values from the potentimeters and store it...
+  
+  pot1Val = analogRead(pot1); // potVal tallentta potentiometrin arvot .
   pot1Angle = map(pot1Val, 0, 1023, 0, 179); // ... and this will map the values from the potentiometers to values the servos can use and store it for later use
   pot2Val = analogRead(pot2); 
   pot2Angle = map(pot2Val, 0, 1023, 0, 179);
@@ -105,7 +105,7 @@ void loop() {
     }
   }
 
-  if(digitalRead(button2) == HIGH){ // Pretty self-explnatory here
+  if(digitalRead(button2) == HIGH){ 
     button2Pressed = true;   
   }
   
