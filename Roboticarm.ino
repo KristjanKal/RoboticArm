@@ -1,7 +1,3 @@
-//Code written by Ryan Chan; it is pretty inefficient, but gets the job done, I challenge you to make it more efficient!
-
-//*IMPORTANT CHANGES IN VERSION 2: LEDs 4 and 5 have been moved to pins 7 and 8 respectively; Buttons 1 and 2 have been moved to pins 12 and 13 respectively. This is to make wiring easier.
-
 #include <Servo.h>
 
 Servo servo1; //Servos
@@ -36,11 +32,11 @@ int servo2PosSaves[] = {1,1,1,1,1};
 int servo3PosSaves[] = {1,1,1,1,1};
 
 void setup() {
-  servo1.attach(5); // pinnit mihin servot ja nappit on kytketty
+  servo1.attach(5); // pinnit mihin servot on kytketty arduino levyl
   servo2.attach(6);
   servo3.attach(9);
   
-  pinMode(LED1, OUTPUT);
+  pinMode(LED1, OUTPUT); // Annat arduinolle tietoa mihin ledit ja nappit on kytketty
   pinMode(LED2, OUTPUT);
   pinMode(LED3, OUTPUT);
   pinMode(LED4, OUTPUT);
@@ -54,21 +50,21 @@ void setup() {
 void loop() {
   
   pot1Val = analogRead(pot1); // potVal tallentta potentiometrin arvot .
-  pot1Angle = map(pot1Val, 0, 1023, 0, 179); // ... and this will map the values from the potentiometers to values the servos can use and store it for later use
+  pot1Angle = map(pot1Val, 0, 1023, 0, 179); // ... ja tämä kartoittaa potentiometrien arvot arvoihin, joita servot voivat käyttää, ja tallentaa ne myöhempää käyttöä varten
   pot2Val = analogRead(pot2); 
   pot2Angle = map(pot2Val, 0, 1023, 0, 179);
   pot3Val = analogRead(pot3);
   pot3Angle = map(pot3Val, 0, 1023, 0, 179);
   
-  servo1.write(pot1Angle); // These will make the servos move to the mapped angles
+  servo1.write(pot1Angle); // servo.write(potAngle) saavat servot siirtymään kartoitettuihin kulmiin mitkä on tallenettu
   servo2.write(pot2Angle);
   servo3.write(pot3Angle);
   
-  if(digitalRead(button1) == HIGH){ // This will check how many times button1 is pressed and save the positions to an array depending on how many times it is pressed; switch/case works like a if statement
+  if(digitalRead(button1) == HIGH){ //tämö funktio tarkista monta kerta nappi ykköstä on painettu ja näyttä ledeil monta asento on tallennettu
     button1Presses++;
-    switch(button1Presses){
+    switch(button1Presses){ and this will map the values from the potentiometers to values the servos can use and store it for later use
       case 1:
-        servo1PosSaves[0] = pot1Angle;
+        servo1PosSaves[0] = pot1Angle; //kaikki liiket mitkä servot teke tallennettaan muistiin 
         servo2PosSaves[0] = pot2Angle;
         servo3PosSaves[0] = pot3Angle;
         digitalWrite(LED1, HIGH);
