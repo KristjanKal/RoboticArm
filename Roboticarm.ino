@@ -1,6 +1,6 @@
 #include <Servo.h>
 
-Servo servo1; //Servos
+Servo servo1; //Servot
 Servo servo2;
 Servo servo3;
 
@@ -23,11 +23,11 @@ const int pot3 = A2;
 int pot1Val; //Potentiometerin arvot 
 int pot2Val;
 int pot3Val;
-int pot1Angle;
+int pot1Angle; // potentiometrin kulmat 
 int pot2Angle;
 int pot3Angle;
 
-int servo1PosSaves[] = {1,1,1,1,1}; //asento arvot 
+int servo1PosSaves[] = {1,1,1,1,1}; //servojen asento arvot.
 int servo2PosSaves[] = {1,1,1,1,1};
 int servo3PosSaves[] = {1,1,1,1,1};
 
@@ -62,12 +62,12 @@ void loop() {
   
   if(digitalRead(button1) == HIGH){ //tämö funktio tarkista monta kerta nappi ykköstä on painettu ja näyttä ledeil monta asento on tallennettu
     button1Presses++;
-    switch(button1Presses){ and this will map the values from the potentiometers to values the servos can use and store it for later use
+    switch(button1Presses){ 
       case 1:
         servo1PosSaves[0] = pot1Angle; //kaikki liiket mitkä servot teke tallennettaan muistiin 
         servo2PosSaves[0] = pot2Angle;
         servo3PosSaves[0] = pot3Angle;
-        digitalWrite(LED1, HIGH);
+        digitalWrite(LED1, HIGH);  // jos servon asento tallennettaan, mene ledi pala. 
         Serial.println("Pos 1 Saved");
         break;
       case 2:
@@ -105,7 +105,7 @@ void loop() {
     button2Pressed = true;   
   }
   
-  if(button2Pressed){ // if the boolean button2Press is true, then the servos will run though all their saved positions
+  if(button2Pressed){ // Jos 1 nappilla on tallennettu liikeittä, 2 nappista se käy kaikki tallennettut asennot läpi loopissa. 
     for(int i = 0; i < 5; i++){
         servo1.write(servo1PosSaves[i]);
         servo2.write(servo2PosSaves[i]);
